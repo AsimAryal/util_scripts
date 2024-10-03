@@ -8,7 +8,7 @@ def create_dir_if_not_exists(path: Path) -> None:
     Parameters:
     path (Path): The path where the directory should be created.
     """
-    
+
     if not path.exists():
         path.mkdir(parents=True)
         print(f"Experiment Directory {path} created.")
@@ -25,9 +25,14 @@ def get_next_exp_num(path: Path, pattern: str = r"exp_(\d+)") -> int:
     Returns:
     int: The next experiment number.
     """
-    exp_nums = [int(match.group(1)) for file in path.iterdir() if (match := re.match(pattern, file.name))]
+    exp_nums = [
+        int(match.group(1))
+        for file in path.iterdir()
+        if (match := re.match(pattern, file.name))
+    ]
 
     return max(exp_nums, default=0) + 1
+
 
 if __name__ == "__main__":
     # Example usage:
