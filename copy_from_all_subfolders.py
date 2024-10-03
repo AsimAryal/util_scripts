@@ -2,12 +2,12 @@ import os
 import shutil
 
 
-def create_directory_if_not_exists(directory):
+def create_directory_if_not_exists(directory: str) -> None:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
 
-def copy_files_to_single_location(source_folder, destination_folder, file_extensions):
+def copy_files_to_single_location(source_folder: str, destination_folder: str, file_extensions: list[str]) -> None:
     """
     Copy files with specific extensions from the source folder to the destination folder without creating subfolders.
 
@@ -25,11 +25,11 @@ def copy_files_to_single_location(source_folder, destination_folder, file_extens
 
 
 def find_and_copy_files(
-    source_dir,
-    destination_dir,
-    folder_name_keyword="",
-    file_extensions=[".jpg", ".jpeg", ".png", ".gif"],
-):
+    source_dir: str,
+    destination_dir: str,
+    folder_name_keyword: str = "",
+    file_extensions: list[str] = [".jpg", ".jpeg", ".png", ".gif"],
+) -> None:
     """
     Traverses a folder and subfolders, finds all folders with a specific keyword in the folder name,
     and copies the files with specific extensions from those folders to another specified location.
