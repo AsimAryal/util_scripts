@@ -2,7 +2,9 @@ import os
 from PIL import Image
 
 
-def tile_image(image_path: str, output_dir: str, tile_size: tuple[int, int]) -> list[str]:
+def tile_image(
+    image_path: str, output_dir: str, tile_size: tuple[int, int]
+) -> list[str]:
     """
     Tile an image into smaller patches.
 
@@ -27,7 +29,9 @@ def tile_image(image_path: str, output_dir: str, tile_size: tuple[int, int]) -> 
         for j in range(0, image_height, tile_height):
             box = (i, j, i + tile_width, j + tile_height)
             tile = image.crop(box)
-            tile_filename = f"{os.path.splitext(os.path.basename(image_path))[0]}_{i}_{j}.png"
+            tile_filename = (
+                f"{os.path.splitext(os.path.basename(image_path))[0]}_{i}_{j}.png"
+            )
             tile_path = os.path.join(output_dir, tile_filename)
             tile.save(tile_path)
             tile_paths.append(tile_path)
@@ -35,7 +39,9 @@ def tile_image(image_path: str, output_dir: str, tile_size: tuple[int, int]) -> 
     return tile_paths
 
 
-def tile_images_in_folder(input_dir: str, output_dir: str, tile_size: tuple[int, int]) -> None:
+def tile_images_in_folder(
+    input_dir: str, output_dir: str, tile_size: tuple[int, int]
+) -> None:
     """
     Tile all images in a folder into smaller patches.
 

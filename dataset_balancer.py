@@ -2,7 +2,9 @@ import random
 from collections import Counter
 
 
-def balance_dataset(data: list[tuple[str, int]], strategy: str = "oversample") -> list[tuple[str, int]]:
+def balance_dataset(
+    data: list[tuple[str, int]], strategy: str = "oversample"
+) -> list[tuple[str, int]]:
     """
     Balance the dataset by oversampling or undersampling.
 

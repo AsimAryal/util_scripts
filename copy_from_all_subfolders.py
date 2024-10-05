@@ -7,7 +7,9 @@ def create_directory_if_not_exists(directory: str) -> None:
         os.makedirs(directory)
 
 
-def copy_files_to_single_location(source_folder: str, destination_folder: str, file_extensions: list[str]) -> None:
+def copy_files_to_single_location(
+    source_folder: str, destination_folder: str, file_extensions: list[str]
+) -> None:
     """
     Copy files with specific extensions from the source folder to the destination folder without creating subfolders.
 
@@ -19,7 +21,9 @@ def copy_files_to_single_location(source_folder: str, destination_folder: str, f
     for file_name in os.listdir(source_folder):
         source_file = os.path.join(source_folder, file_name)
         destination_file = os.path.join(destination_folder, file_name)
-        if os.path.isfile(source_file) and any(file_name.lower().endswith(ext) for ext in file_extensions):
+        if os.path.isfile(source_file) and any(
+            file_name.lower().endswith(ext) for ext in file_extensions
+        ):
             shutil.copy2(source_file, destination_file)
             print(f"Copied {source_file} to {destination_file}")
 
@@ -46,7 +50,9 @@ def find_and_copy_files(
         for dir_name in dirs:
             if folder_name_keyword.lower() in dir_name.lower():
                 source_folder = os.path.join(root, dir_name)
-                copy_files_to_single_location(source_folder, destination_dir, file_extensions)
+                copy_files_to_single_location(
+                    source_folder, destination_dir, file_extensions
+                )
 
 
 if __name__ == "__main__":
